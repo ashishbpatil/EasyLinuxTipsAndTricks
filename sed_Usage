@@ -1,0 +1,15 @@
+1. Search and replace string with another in all files:
+  a. current directory:
+    $ sed -i -- 's/test/replace/g' *  or $ sed -i -- 's/test/replace/g' *.txt (replacein all txt files only)
+  b. All directory:
+    $ find . -type f -exec sed -i 's/test/replace/g' {} + or find . -type f -name "*.txt” -exec sed -i 's/test/replace/g' {} +
+
+2. Append line after match
+  $ sed  '/\[option\]/a Hello World' input
+
+3. Insert line before match
+  $ sed  '/\[option\]/i Hello World' input
+
+4. replace a unknown string between two known strings with sed
+  $ sed -i 's/WORD1.*WORD3/WORD1 foo WORD3/g' file.txt Or $ sed -i 's/(WORD1).*(WORD3)/\1 foo \2/g' file.txt
+  Note: You might need to escape round brackets, depends on your sed variant.
